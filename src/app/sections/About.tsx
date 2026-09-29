@@ -16,7 +16,7 @@ export default function About() {
             <div className="about-img">
               {/*<Image src={aboutImage} alt="" />*/}
               <video autoPlay muted loop playsInline>
-                <source src="/assets/videos/kk83-video.mp4" type="video/mp4" />
+                <source src="/assets/videos/the-foundry-video-2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -28,9 +28,7 @@ export default function About() {
             </h2>
             {/*<p className="italic leading-relaxed tracking-wide my-6 px-4 text-lg text-gray-700">*/}
             <p className="hero-text">
-              Klub Kitchen 83 is your go-to in Sketty,
-              Swansea for bold street food flavours — from loaded fries and tacos to our famous burgers.
-              Freshly made, packed with flavour, and served with a smile.
+              At The Foundry, we believe every meal should be an experience worth savoring. Whether you’re dropping by for a rich morning coffee, a quick handcrafted lunch, or a cozy evening meal, our kitchen is dedicated to serving freshly prepared, high-quality dishes made with passion and local ingredients.
             </p>
 
           </div>
