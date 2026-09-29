@@ -1,0 +1,39 @@
+/*--------------------------------------------------------------
+# Specials
+--------------------------------------------------------------*/
+.specials {
+  overflow: hidden;
+  background: var(--color-box);
+}
+
+.specials .nav-tabs {
+  border: 0;
+}
+
+.specials .nav-link {
+  border: 0;
+  padding: 12px 15px;
+  color: var(--color-text-gray);
+  border-radius: 0;
+  border-right: 2px solid var(--color-primary);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.specials .nav-link:hover {
+  color: var(--color-primary-hover);
+}
+
+.specials .nav-link.active {
+  color: var(--color-text);
+  background: var(--color-primary);
+}
+
+@media (max-width: 992px) {
+  .specials .nav-link {
+    border: 0;
+    padding: 15px;
+  }
+}

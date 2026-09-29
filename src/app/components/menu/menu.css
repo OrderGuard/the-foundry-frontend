@@ -1,0 +1,61 @@
+/*--------------------------------------------------------------
+# Menu Section
+--------------------------------------------------------------*/
+.container-scroll {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 60px;
+}
+
+.no-menu {
+  margin-top: 30px;
+}
+
+#menu-flters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  border-radius: 9px !important;
+  list-style: none;
+  scrollbar-width: thin; /* for Firefox */
+}
+
+.menu #menu-flters {
+  padding: 0;
+  margin: 0 auto 0 auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.menu #menu-flters li {
+  flex: 0 0 auto;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px 10px 12px;
+  font-size: 16px;
+  border-radius: 9px !important;
+  background: #fff;
+  font-weight: 500;
+  backface-visibility: ;
+  line-height: 1;
+  color: #000 !important;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 10px;
+  transition: all ease-in-out 0.3s;
+  font-family: 'Playfair Display', serif;
+}
+
+.menu #menu-flters li:hover,
+.menu #menu-flters li.filter-active {
+  color: #fff !important;
+  background-color: #0e2577 !important;
+}
+
+.menu #menu-flters li:last-child {
+  margin-right: 0;
+}

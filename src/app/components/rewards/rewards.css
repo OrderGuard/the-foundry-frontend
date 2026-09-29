@@ -1,0 +1,370 @@
+
+.rewards-section{
+    background:#111;
+    padding: 12px;
+    border:1px solid #c79b4c;
+    border-radius:18px;
+}
+
+.reward-card{
+    background:#1a1a1a;
+    border-radius:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    gap:21px;
+    color:white;
+}
+
+.reward-info{
+    width:600px;
+}
+
+.reward-tag{
+
+    color:#d9aa52;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.85rem;
+}
+
+.reward-info h2{
+    font-size:52px;
+    line-height:.95;
+    margin:10px 0 12px;
+}
+
+.reward-info p{
+    font-size:16px;
+    margin-bottom:18px;
+}
+
+.point-box{
+    margin-top: 21px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.point-item{
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    padding:18px;
+}
+
+.point-item svg{
+    color:#d9aa52;
+    font-size:28px;
+}
+
+.reward-btn{
+    margin-top:30px;
+    border:none;
+    background:#d9aa52;
+    color:#fff;
+    padding:14px 35px;
+    border-radius:8px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.reward-btn:hover{
+    transform:translateY(-3px);
+    color: var(--color-gold);
+    border: 2px solid var(--color-text);
+    background-color: var(--color-text);
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+    transform: translateY(-2px);
+}
+
+.wheel-wrapper{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.wheel{
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    border:8px solid #d9aa52;
+    background:
+        repeating-conic-gradient(
+            #2a2a2a 0deg 20deg,
+            #242424 20deg 40deg
+        );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    box-shadow:0 0 40px rgba(217,170,82,.25);
+}
+
+.wheel::before{
+    content:"";
+    position:absolute;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    border:2px dashed rgba(217,170,82,.35);
+}
+
+.wheel-center{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:2px solid #d9aa52;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#171717;
+    font-size:34px;
+    color:#d9aa52;
+}
+
+.wheel-pointer{
+    position:absolute;
+    top:-18px;
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:30px solid #ff5d45;
+    z-index:5;
+}
+
+.wheel-points{
+    margin-top:30px;
+    background:#111;
+    border:1px solid #444;
+    border-radius:10px;
+    padding:14px 24px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.wheel-points svg{
+    color:#d9aa52;
+}
+
+.reward-features{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#191919;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    gap:18px;
+    align-items:center;
+    padding:25px;
+}
+
+.feature svg{
+    color:#d9aa52;
+    font-size:28px;
+}
+
+.feature h5{
+    color:white;
+}
+
+.feature p{
+    color:#999;
+    margin:0;
+}
+
+/* ===========================
+   Tablet
+=========================== */
+@media (max-width: 992px) {
+
+  .rewards-section{
+    padding:15px;
+  }
+
+  .reward-card{
+    flex-direction:column;
+    text-align:center;
+    gap:25px;
+    padding:20px;
+  }
+
+  .reward-info{
+    width:100%;
+  }
+
+  .reward-info h2{
+    font-size:40px;
+  }
+
+  .reward-info p{
+    font-size:15px;
+  }
+
+  .point-item{
+    justify-content:center;
+    text-align:left;
+    padding:14px;
+  }
+
+  .reward-btn{
+    width:100%;
+  }
+
+  .wheel{
+    width:260px;
+    height:260px;
+  }
+
+  .wheel::before{
+    width:276px;
+    height:276px;
+  }
+
+  .wheel-center{
+    width:70px;
+    height:70px;
+    font-size:26px;
+  }
+
+  .reward-features{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .feature{
+    padding:18px;
+  }
+}
+
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width: 576px){
+
+  .rewards-section{
+    padding:12px;
+  }
+
+  .reward-card{
+    padding:15px;
+    gap:20px;
+  }
+
+  .reward-info{
+    width:100%;
+  }
+
+  .reward-tag{
+    font-size:.75rem;
+  }
+
+  .reward-info h2{
+    font-size:2rem;
+    line-height:1.1;
+  }
+
+  .reward-info p{
+    font-size:.95rem;
+  }
+
+  .point-box{
+    gap:12px;
+  }
+
+  .point-item{
+    padding:12px;
+    gap:12px;
+  }
+
+  .point-item svg{
+    font-size:20px;
+  }
+
+  .point-item h4{
+    font-size:1rem;
+    margin-bottom:2px;
+  }
+
+  .point-item span{
+    font-size:.85rem;
+  }
+
+  .reward-btn{
+    width:100%;
+    padding:12px;
+    font-size:.9rem;
+  }
+
+  .wheel{
+    width:200px;
+    height:200px;
+    border-width:5px;
+  }
+
+  .wheel::before{
+    width:214px;
+    height:214px;
+  }
+
+  .wheel-center{
+    width:55px;
+    height:55px;
+    font-size:20px;
+  }
+
+  .wheel-pointer{
+    top:-12px;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:20px solid #ff5d45;
+  }
+
+  .wheel-points{
+    margin-top:18px;
+    padding:10px 16px;
+    font-size:.9rem;
+  }
+
+  .reward-features{
+    margin-top:20px;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .feature{
+    padding:15px;
+    gap:12px;
+  }
+
+  .feature svg{
+    font-size:22px;
+  }
+
+  .feature h5{
+    font-size:1rem;
+    margin-bottom:4px;
+  }
+
+  .feature p{
+    font-size:.85rem;
+  }
+
+}

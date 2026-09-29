@@ -1,0 +1,133 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+:root {
+  --font-base: 'Open Sans', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  /*header*/
+  --color-header: #4f4f4f;
+  --color-header-tr: #aaaaaa;
+  /*--color-header-tr: rgba(12, 11, 9, 0.8);*/
+  /*--color-header-scroll: rgba(12, 11, 9, 0.85);*/
+  --color-header-scroll: #4f4f4f;
+
+  --color-background: #0c0b09;
+  --color-section-bg: #1a1814;
+  --color-section-bf-white: #2e4ba160;
+
+  /*Primary*/
+  --color-primary: #0a2579;
+  --color-primary-hover: #2e4ba1;
+  --color-gold: #cda45e;
+  --color-gold-transparent: #cda45e60; /* 99 = ~60% opacity */
+  --color-primary-red: #7d0000;
+  --color-primary-red-hover: #b30000;
+
+  /*text color*/
+  --color-text: #ffffff;
+  --color-text-dark: #0c0b09;
+  --color-text-gray: #aaaaaa;
+
+  /*box color */
+  /*--color-box: #2e4ba190;*/
+  --color-box: var(--color-background);
+  /*end*/
+
+  --section-padding: 60px 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  background: #0c0b09 !important;
+  color: #ffffff;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: var(--color-section-bg);
+}
+
+/*
+ * Pages
+ * */
+#page {
+  width: 100%;
+  min-height: 100vh;
+  /*background: url('../../public/assets/images/upland-restaurant-bg.png') top center;*/
+  background: url('../../public/assets/images/about-bg.jpg') top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#page:before {
+  content: '';
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/*#page .container {*/
+  /*width: 60%;*/
+  /*min-height: 100vh;*/
+  /*padding: 30px;*/
+  /*background: rgba(0, 0, 0, 0.5);*/
+  /*z-index: 2;*/
+/*}*/
+
+/*Cookie Consent*/
+@keyframes slide-up {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+

@@ -1,0 +1,84 @@
+/* Notice for out of range (red) */
+.notice-red {
+  color: #dc2626;       /* Tailwind's red-600 */
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Notice for within range (green) */
+.notice-green {
+  color: #16a34a;       /* Tailwind's green-600 */
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+button[disabled] {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+}
+
+.btn-address:hover {
+  color: #fff;
+  background: var(--color-gold);
+}
+
+.button-coupon {
+  margin-top: 8px;
+}
+
+.contact .contact-form {
+  margin-top: 180px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.link-color {
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+div.cart-item-div {
+  margin-bottom: 18px;
+}
+
+.cart-item,
+.cart-item-div {
+  border: 1px solid var(--color-gold-transparent);
+  background-color: #44444460;
+  color: white;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25rem; /* optional rounded corners */
+  margin-bottom: 0.5rem;
+}
+
+/* Notes textarea (block style) */
+textarea {
+  width: 100%;
+  border: 1px solid var(--color-gold-transparent);
+  background-color: #44444460 !important;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  resize: vertical;
+  outline: none;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 5px var(--color-gold-transparent);
+}
+
+.cart-item .item-name {
+  font-weight: 600;
+}
+
+.cart-item .item-qty,
+.cart-item .item-total {
+  font-size: 0.875rem;
+}
+

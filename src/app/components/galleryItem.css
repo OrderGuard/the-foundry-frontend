@@ -1,0 +1,26 @@
+
+.gallery {
+  background: var(--color-box);
+}
+
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid #454035;
+  border-bottom: 3px solid #454035;
+  width: 100%;            /* Make it fill the container */
+  height: 380px;          /* Fixed height for consistency */
+  display: block;
+  position: relative;
+}
+
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+  object-fit: cover;      /* Ensures the image covers the area without stretching */
+  width: 100%;            /* Make it fill the container */
+  height: 100%;          /* Fixed height for consistency */
+  display: block;
+}
+
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}

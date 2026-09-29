@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------
+# Book a table button Menu
+--------------------------------------------------------------*/
+.app-btn {
+  margin: 0 0 0 15px;
+  border: 2px solid #cda45e;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.app-btn:hover {
+  background: #cda45e;
+  color: #fff;
+}
+
+.custom-outline {
+  margin: 0 0 0 15px;
+  border: 2px solid #cda45e;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  padding: 8px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.custom-outline:hover {
+  background: #cda45e;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .app-btn {
+    margin: 0 15px 0 0;
+    padding: 8px 20px;
+  }
+}

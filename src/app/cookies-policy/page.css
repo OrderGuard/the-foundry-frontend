@@ -1,0 +1,62 @@
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+#page .container {
+  padding-top: 180px; /* adjust as needed */
+}
+
+/* Container spacing */
+.profile-page .container {
+  margin-top: 180px;
+  width: 60%;
+  min-height: 100vh;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+a.link {
+  color: var(--color-gold);
+}
+
+@media (max-width: 992px) {
+  #page.payment-success .container {
+    padding-top: 98px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #page {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-height: 500px) {
+  #page {
+    height: auto;
+  }
+  #page .container {
+    padding-top: 130px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  #page .container {
+    width: 90%;
+    padding-top: 180px;
+    padding-bottom: 60px;
+  }
+  #page h1 {
+    font-size: 36px;
+    line-height: 36px;
+  }
+  #page h2 {
+    font-size: 30px;
+    line-height: 24px;
+  }
+}
+
+
+
+

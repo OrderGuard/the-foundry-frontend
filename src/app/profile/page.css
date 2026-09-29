@@ -1,0 +1,243 @@
+/*--------------------------------------------------------------
+# Profile Page (Scoped)
+--------------------------------------------------------------*/
+
+/* ONLY affect profile page */
+.profile-page {
+  color: #fff;
+}
+
+/* Container spacing */
+.profile-page .container {
+  margin-top: 180px;
+  width: 60%;
+  min-height: 100vh;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.profile-page .wheel-section {
+  display: flex;
+  justify-content: center; /* 🔥 centers horizontally */
+  width: 100%;
+}
+
+.profile-page .wheel-box {
+  margin-top: 30px;
+  width: 480px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents internal movement from leaking out */
+}
+
+/* FOOTER */
+.modal-footer-reward {
+  flex-shrink: 0;
+  background: var(--color-header);
+  border-top: 1px solid #ddd;
+  height: 6vh;
+  padding: 1rem;
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+}
+
+@media (max-width: 768px) {
+  .profile-page .wheel-box {
+    margin-top: 10px; /* 👈 smaller spacing on mobile */
+    align-items: flex-start; /* keep top on mobile */
+    height: 420px;
+  }
+}
+
+/* Profile content spacing */
+.profile-page .profile {
+  padding-top: 0; /* avoid double spacing */
+}
+
+.profile-page .profile-item form{
+  padding: 8px;
+  background: #44444460 !important;
+}
+
+/* Profile items */
+.profile-page .profile-item {
+  padding: 8px;
+  background: #44444460;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-gold-transparent);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+/* Links */
+.profile-page a.link {
+  color: var(--color-gold);
+}
+
+/* Responsive fixes */
+@media (max-width: 992px) {
+  .profile-page .container {
+    padding-top: 98px;
+  }
+}
+
+@media (max-height: 500px) {
+  .profile-page {
+    height: auto;
+  }
+
+  .profile-page .container {
+    padding-top: 130px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-page .container {
+    width: 100%;
+    margin-top: 120px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .profile-page h1 {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .profile-page h2 {
+    font-size: 30px;
+    line-height: 24px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Menu Filters (Scoped)
+--------------------------------------------------------------*/
+
+.profile-page #menu-flters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  border-radius: 9px;
+  list-style: none;
+  scrollbar-width: thin;
+}
+
+.profile-page .menu #menu-flters {
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.profile-page .menu #menu-flters li {
+  flex: 0 0 auto;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px 10px;
+  font-size: 16px;
+  border-radius: 9px;
+  background: #fff;
+  font-weight: 500;
+  line-height: 1;
+  color: #000;
+  margin: 0 6px 10px;
+  transition: all 0.3s;
+  font-family: 'Playfair Display', serif;
+}
+
+.profile-page .menu #menu-flters li:hover,
+.profile-page .menu #menu-flters li.filter-active {
+  color: #fff;
+  background-color: #0e2577;
+}
+
+/*--------------------------------------------------------------
+# Buttons / Forms
+--------------------------------------------------------------*/
+
+.profile-page .order-type-button {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  border-radius: 0.5rem;
+  background-color: #cda45e;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.profile-page .order-type-button:hover {
+  border-color: #cda45e;
+}
+
+.profile-page .contact .contact-form input,
+.profile-page .contact .contact-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  background: #0c0b09;
+  border-color: #625b4b;
+  color: white;
+}
+
+/*--------------------------------------------------------------
+# Confirm Modal
+--------------------------------------------------------------*/
+
+.profile-page .confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.profile-page .confirm-modal {
+  background: #0c0b09;
+  border: 1px solid #625b4b;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  color: white;
+}
+
+.profile-page .confirm-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.profile-page .confirm-actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-page .confirm-actions button:first-child {
+  background: #444;
+  color: white;
+}
+
+.profile-page .confirm-actions button:last-child {
+  background: #cda45e;
+  color: white;
+}
+
+
+
