@@ -1,186 +1,376 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from './SectionTitle';
 import Preloader from './Preloader';
 import MenuItem from './MenuItem';
-import './menu.css';
 import MenuModal from './MenuModal';
+import './menu.css';
 
-export default function MenuComponents() {
-
-  type Category = {
-    id: number;
-    name: string;
-  };
-
-  type MenuItemType = {
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    ingredients: string;
-    category: {
-      id: number;
-      name: string;
-    };
-  };
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<MenuItemType[]>([]);
-  const [items, setItems] = useState<MenuItemType[]>([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [filters, setFilters] = useState<
-    { id: number; name: string; category: number | null; active: boolean }[]
-  >([]);
-
-  //const getMenuData = () => {
-    //fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu/items/?available=true`)
-      //.then(res => res.json())
-      //.then(menu => setData(menu))
-      //.catch(e => console.log(e.message));
-  //};
-
-//const getCategoryData = () => {
-  //fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu/categories/`)
-    //.then(res => res.json())
-    //.then(cats => {
-      //const today = new Date().getDay(); // Sunday = 0
-
-      //const filtered = cats.filter((cat: any) => {
-        //if (cat.name.toLowerCase().includes('sunday')) {
-          //return today === 0; // show ONLY on Sunday
-        //}
-        //return true;
-      //});
-
-      //setCategories(filtered);
-    //})
-    //.catch(e => console.error('Categories error:', e.message));
-//};
-
-  const getMenuData = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/menu/items/?available=true`
-    );
-    return await res.json();
-  };
-
-  const getCategoryData = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/menu/categories/`
-  );
-  const cats = await res.json();
-
-  const today = new Date().getDay(); // Sunday = 0
-
-  return cats.filter((cat: any) => {
-    const name = cat.name.toLowerCase();
-
-    const isSunday = name.includes('sunday');
-    const isDessert = name.includes('dessert');
-
-    if (isDessert) return true; // ✅ always show desserts
-
-    if (today === 0) {
-      // Sunday → show Sunday categories only (plus desserts already handled)
-      return isSunday;
-    } else {
-      // Not Sunday → hide Sunday categories
-      return !isSunday;
-    }
-  });
+type Menu = {
+  id: number;
+  name: string;
+  start_time?: string;
+  end_time?: string;
+  is_active?: boolean;
 };
 
-  //useEffect(() => {
-    //getCategoryData();
-  //}, []);
+type Category = {
+  id: number;
+  name: string;
+};
 
-  //useEffect(() => {
-    //getMenuData();
-  //}, []);
-
-useEffect(() => {
-  const fetchAllData = async () => {
-    try {
-      setLoading(true);
-
-      const [menu, filteredCategories] = await Promise.all([
-        getMenuData(),
-        getCategoryData(),
-      ]);
-
-      setData(menu);
-      setCategories(filteredCategories);
-
-    } catch (error: any) {
-      console.error('Fetch error:', error.message);
-    } finally {
-      setLoading(false);
-    }
+type MenuItemType = {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  ingredients: string;
+  category: {
+    id: number;
+    name: string;
   };
+};
 
-  fetchAllData();
-}, []);
+export default function MenuComponents() {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  // When menu data or filters change
-  useEffect(() => {
-    setItems(data);
-  }, [data]);
+  // ----------------------------------------
+  // STATE
+  // ----------------------------------------
 
-  // Categories make a one line
-  useEffect(() => {
-    if (categories.length === 0) return;
+  // Breakfast / Dinner
+  const [menus, setMenus] = useState<Menu[]>([]);
 
-    // Create category filters
-    const dynamicFilters = categories.map((cat, index) => ({
-      id: cat.id,
-      name: cat.name,
-      category: cat.id,
-      active: index === 0, // make the first category active by default
-    }));
+  // Selected Breakfast/Dinner
+  const [selectedMenu, setSelectedMenu] = useState<Menu | null>(null);
 
-    setFilters(dynamicFilters);
+  // Categories
+  const [categories, setCategories] = useState<Category[]>([]);
 
-    // Show items from the first category automatically
-    const firstCategoryId = categories[0].id;
-    setItems(data.filter((item) => item.category?.id === firstCategoryId));
-  }, [categories, data]);
+  // Selected category
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category | null>(null);
 
-  const handleFilterChange = (id: number, category: number | null) => {
-    setFilters((prev) =>
-      prev.map((f) => ({
-        ...f,
-        active: f.id === id,
-      }))
+  // ALL menu items
+  const [data, setData] = useState<MenuItemType[]>([]);
+
+  // ITEMS DISPLAYED FOR SELECTED CATEGORY
+  const [items, setItems] = useState<MenuItemType[]>([]);
+
+  // Selected item for modal
+  const [selectedItem, setSelectedItem] =
+    useState<MenuItemType | null>(null);
+
+  // Loading states
+  const [menuLoading, setMenuLoading] = useState(true);
+  const [categoryLoading, setCategoryLoading] = useState(false);
+  const [itemsLoading, setItemsLoading] = useState(false);
+
+  // ----------------------------------------
+  // GET MENUS
+  // ----------------------------------------
+
+  const getMenus = async () => {
+    const response = await fetch(
+      `${API_URL}/menu/menu/`
     );
 
-    setItems(data.filter((item) => item.category?.id === category));
+    if (!response.ok) {
+      throw new Error('Failed to fetch menus');
+    }
+
+    return await response.json();
   };
 
+  // ----------------------------------------
+  // GET CATEGORIES
+  // ----------------------------------------
+
+  const getCategories = async (menuName: string) => {
+    const response = await fetch(
+      `${API_URL}/menu/menu/${menuName.toLowerCase()}/`
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch categories');
+    }
+
+    return await response.json();
+  };
+
+  // ----------------------------------------
+  // GET ALL MENU ITEMS
+  // ----------------------------------------
+
+  const getMenuItems = async () => {
+    const response = await fetch(
+      `${API_URL}/menu/items/?available=true`
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch menu items');
+    }
+
+    return await response.json();
+  };
+
+  // ----------------------------------------
+  // LOAD MENUS + MENU ITEMS
+  // ----------------------------------------
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        setMenuLoading(true);
+
+        const [menuData, itemData] = await Promise.all([
+          getMenus(),
+          getMenuItems(),
+        ]);
+
+        // Only active menus
+        const activeMenus = menuData.filter(
+          (menu: Menu) => menu.is_active !== false
+        );
+
+        setMenus(activeMenus);
+
+        // Save ALL menu items
+        setData(itemData);
+
+        // Select first menu
+        if (activeMenus.length > 0) {
+          setSelectedMenu(activeMenus[0]);
+        }
+
+      } catch (error) {
+        console.error(
+          'Initial data error:',
+          error
+        );
+      } finally {
+        setMenuLoading(false);
+      }
+    };
+
+    fetchInitialData();
+  }, []);
+
+  // ----------------------------------------
+  // LOAD CATEGORIES WHEN MENU CHANGES
+  // ----------------------------------------
+
+  useEffect(() => {
+    if (!selectedMenu) return;
+
+    const fetchCategories = async () => {
+      try {
+        setCategoryLoading(true);
+
+        // Clear previous category/items
+        setCategories([]);
+        setSelectedCategory(null);
+        setItems([]);
+
+        const categoryData = await getCategories(
+          selectedMenu.name
+        );
+
+        // Don't show Toppings
+        const filteredCategories =
+          categoryData.filter(
+            (category: Category) =>
+              !category.name
+                .toLowerCase()
+                .includes('toppings')
+          );
+
+        setCategories(filteredCategories);
+
+        // Automatically select first category
+        if (filteredCategories.length > 0) {
+          setSelectedCategory(
+            filteredCategories[0]
+          );
+        }
+
+      } catch (error) {
+        console.error(
+          'Category error:',
+          error
+        );
+      } finally {
+        setCategoryLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, [selectedMenu]);
+
+  // ----------------------------------------
+  // FILTER ITEMS WHEN CATEGORY CHANGES
+  // ----------------------------------------
+
+  useEffect(() => {
+    if (!selectedCategory) {
+      setItems([]);
+      return;
+    }
+
+    setItemsLoading(true);
+
+    // IMPORTANT:
+    // Only show items belonging to
+    // the selected category.
+    const filteredItems = data.filter(
+      (item) =>
+        item.category?.id ===
+        selectedCategory.id
+    );
+
+    setItems(filteredItems);
+
+    setItemsLoading(false);
+
+  }, [selectedCategory, data]);
+
+  // ----------------------------------------
+  // MENU CLICK
+  // ----------------------------------------
+
+  const handleMenuChange = (menu: Menu) => {
+    setSelectedMenu(menu);
+  };
+
+  // ----------------------------------------
+  // CATEGORY CLICK
+  // ----------------------------------------
+
+  const handleCategoryChange = (
+    category: Category
+  ) => {
+    setSelectedCategory(category);
+  };
+
+  // ----------------------------------------
+  // LOADING MENUS
+  // ----------------------------------------
+
+  if (menuLoading) {
+    return (
+      <section
+        id="menu"
+        className="menu section-bg-opacity"
+      >
+        <div className="container container-scroll">
+          <Preloader />
+        </div>
+      </section>
+    );
+  }
+
+  // ----------------------------------------
+  // RENDER
+  // ----------------------------------------
 
   return (
-    <section id="menu" className="menu section-bg-opacity">
+    <section
+      id="menu"
+      className="menu section-bg-opacity"
+    >
       <div className="container container-scroll">
-        <div className="row" data-aos="fade-up" data-aos-delay="100">
-        <SectionTitle title="Our Menu" subtitle="Check Our Tasty Menu" />
+
+        {/* ================================== */}
+        {/* TITLE */}
+        {/* ================================== */}
+
+        <div
+          className="row"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <SectionTitle
+            title="Our Menu"
+            subtitle="Check Our Tasty Menu"
+          />
+        </div>
+
+        {/* ================================== */}
+        {/* BREAKFAST / DINNER */}
+        {/* ================================== */}
+
+        <div className="col-lg-12 d-flex justify-content-center">
+          <ul id="menu-flters">
+
+            {menus.map((menu) => (
+              <li
+                key={menu.id}
+                className={
+                  selectedMenu?.id === menu.id
+                    ? 'filter-active'
+                    : undefined
+                }
+                onClick={() =>
+                  handleMenuChange(menu)
+                }
+              >
+                {menu.name}
+              </li>
+            ))}
+
+          </ul>
+        </div>
+
+        {/* ================================== */}
+        {/* CATEGORIES */}
+        {/* ================================== */}
+
+        {categoryLoading ? (
+          <div className="row">
+            <Preloader />
+          </div>
+        ) : categories.length > 0 ? (
+
           <div className="col-lg-12 d-flex justify-content-center">
-            <ul id="menu-flters">
-              {/*Filter and don't include Toppings Categories on tab*/}
-              {filters
-                .filter(filter => !filter.name.toLowerCase().includes('toppings'))
-                .map(filter => (
-                  <li
-                    key={filter.id}
-                    className={filter.active ? 'filter-active' : undefined}
-                    onClick={() => handleFilterChange(filter.id, filter.category)}
-                  >
-                    {filter.name}
-                  </li>
-                ))}
+            <ul
+              id="menu-flters"
+              className="category-filters"
+            >
+
+              {categories.map((category) => (
+                <li
+                  key={category.id}
+                  className={
+                    selectedCategory?.id ===
+                    category.id
+                      ? 'filter-active'
+                      : undefined
+                  }
+                  onClick={() =>
+                    handleCategoryChange(
+                      category
+                    )
+                  }
+                >
+                  {category.name}
+                </li>
+              ))}
+
             </ul>
           </div>
-        </div>
+
+        ) : (
+
+          <p className="no-menu text-center w-100">
+            No categories available
+          </p>
+
+        )}
+
+        {/* ================================== */}
+        {/* MENU ITEMS */}
+        {/* ================================== */}
 
         <div
           className="row menu-container"
@@ -188,34 +378,58 @@ useEffect(() => {
           data-aos-delay="200"
         >
 
-          {loading ? (
-    <Preloader />
-  ) : items.length === 0 ? (
-    <p className="no-menu text-center w-100">
-      No menu item available
-    </p>
-  ) : (
-    items
-      .filter(item => {
-        const categoryName = item.category?.name ?? item.category;
-        return !String(categoryName)
-          .toLowerCase()
-          .includes('toppings');
-      })
-      .map(item => (
-        <MenuItem
-          key={item.id}
-          item={item}
-          onDetailsClick={setSelectedItem}
-        />
-      ))
-  )}
+          {itemsLoading ? (
+
+            <Preloader />
+
+          ) : items.length === 0 ? (
+
+            <p className="no-menu text-center w-100">
+              No menu item available
+            </p>
+
+          ) : (
+
+            items
+              .filter((item) => {
+
+                const categoryName =
+                  item.category?.name ?? '';
+
+                return !categoryName
+                  .toLowerCase()
+                  .includes('toppings');
+
+              })
+              .map((item) => (
+
+                <MenuItem
+                  key={item.id}
+                  item={item}
+                  onDetailsClick={
+                    setSelectedItem
+                  }
+                />
+
+              ))
+
+          )}
 
         </div>
 
       </div>
+
+      {/* ================================== */}
+      {/* MODAL */}
+      {/* ================================== */}
+
       {selectedItem && (
-        <MenuModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+        <MenuModal
+          item={selectedItem}
+          onClose={() =>
+            setSelectedItem(null)
+          }
+        />
       )}
 
     </section>
