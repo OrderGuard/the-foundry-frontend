@@ -9,35 +9,35 @@ export default function Gallery() {
   const images = [
     {
       id: 1,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-1.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-1.jpeg',
     },
     {
       id: 2,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-2.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-2.jpeg',
     },
     {
       id: 3,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-3.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-3.jpeg',
     },
     {
       id: 4,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-4.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-4.jpeg',
     },
     {
       id: 5,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-5.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-5.jpeg',
     },
     {
       id: 6,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-6.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-6.jpeg',
     },
     {
       id: 7,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-7.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-7.jpeg',
     },
     {
       id: 8,
-      image: '/assets/images/gallery/klub-kitchen-83-gallery-8.PNG',
+      image: '/assets/images/the-foundry-images/the-foundry-8.jpeg',
     },
   ];
 
