@@ -37,7 +37,7 @@ export default function Hero() {
           <div className="col-12 d-flex flex-column align-items-center text-center">
 
             {/* Logo */}
-            <Link href="/" className="d-block mb-4">
+            <Link href="/" className="hero-logo d-block mb-4">
               <Image
                 src="/assets/images/the-foundry-logo-no-bg.png"
                 alt="The Foundry Cafe & Kitchen Logo"
@@ -50,7 +50,7 @@ export default function Hero() {
             {/* Order Button */}
             <button
               onClick={handleLoginClick}
-              className="btn btn-sm custom-outline"
+              className="hero-order-btn btn btn-sm custom-outline"
             >
               ORDER MENU
             </button>
