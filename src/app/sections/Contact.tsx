@@ -12,7 +12,7 @@ export default function Contact() {
       <div data-aos="fade-up">
         <iframe
           style={{ border: 0, width: '100%', height: '350px' }}
-          src="https://www.google.com/maps?q=83+Eversley+Rd,+Sketty,+Swansea+SA2+9DE&output=embed"
+          src="https://www.google.com/maps?q=5+High+Street,+Swansea,+SA1+1LE&output=embed"
           allowFullScreen
         ></iframe>
       </div>
@@ -24,7 +24,7 @@ export default function Contact() {
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>83 Eversley Rd, Sketty, Swansea SA2 9DE</p>
+                <p>5 high street, Swansea, SA1 1LE</p>
               </div>
 
               <div className="open-hours">
@@ -37,36 +37,36 @@ export default function Contact() {
                   <br />*/}
 
                 <p>
-                  Wednesday-Thursday:
+                  Breakfast
                   <br />
-                  5:00 PM - 10:30 PM
+                  9:00 AM - 4:00 PM
                 </p>
                   <br />
 
                 <p>
-                  Friday-Saturday:
+                  Dinner
                   <br />
-                  5:00 PM - 11:00 PM
+                  5:00 PM - 10:00 PM
                 </p>
                   <br />
 
-                <p>
+                {/*<p>
                   Sunday:
                   <br />
                   11:00 AM - 3:00 PM
-                </p>
+                </p>*/}
               </div>
 
               <div className="email">
                 <i className="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>Klubkitchen83@gmail.com</p>
+                <p>theFoundry@gmail.com</p>
               </div>
 
               <div className="phone">
                 <i className="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>07818030777</p>
+                <p>01792956055</p>
               </div>
             </div>
           </div>
