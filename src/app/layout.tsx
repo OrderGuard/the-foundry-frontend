@@ -41,6 +41,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'The Foundry',
   description: 'Cafe & Kitchen',
+  icons: {
+    icon: '/assets/images/the-foundry-logo-no-bg.png', // path relative to the public folder
+  },
+
 };
 
 export default function RootLayout({
