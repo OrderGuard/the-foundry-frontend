@@ -54,7 +54,7 @@ export default function Footer() {
                   5 high street, Swansea, SA1 1LE
                   <br /><br />
                   <strong>Phone:</strong> 01792956055<br />
-                  <strong>Email:</strong> theFoundry@gmail.com<br />
+                  {/*<strong>Email:</strong> theFoundry@gmail.com<br />*/}
                 </p>
               </div>
             </div>
