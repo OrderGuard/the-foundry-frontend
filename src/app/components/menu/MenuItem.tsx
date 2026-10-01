@@ -14,7 +14,7 @@ type MenuItemProps = {
 };
 
 export default function MenuItem({ item, onDetailsClick }: MenuItemProps) {
-  const [imgSrc, setImgSrc] = useState(item.image || "/assets/images/klub-kitchen-83-logo-white.PNG");
+  const [imgSrc, setImgSrc] = useState(item.image || "/assets/images/the-foundry-logo.jpeg");
   //const [imgSrc, setImgSrc] = useState(item.image || "/assets/images/menu/cake.jpg");
 
   return (
