@@ -39,8 +39,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Klub Kitchen 83',
-  description: 'Bold street food flavours in Sketty, Swansea. Loaded fries, tacos, and famous burgers.',
+  title: 'The Foundry',
+  description: 'Cafe & Kitchen',
 };
 
 export default function RootLayout({
