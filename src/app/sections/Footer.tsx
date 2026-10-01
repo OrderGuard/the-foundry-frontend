@@ -51,10 +51,10 @@ export default function Footer() {
               <div className="footer-info">
                 <h3>Restaurant</h3>
                 <p>
-                  83 Eversley Rd, Sketty, <br />Swansea SA2 9DE
+                  5 high street, Swansea, SA1 1LE
                   <br /><br />
-                  <strong>Phone:</strong> 07818030777<br />
-                  <strong>Email:</strong> Klubkitchen83@gmail.com<br />
+                  <strong>Phone:</strong> 01792956055<br />
+                  <strong>Email:</strong> theFoundry@gmail.com<br />
                 </p>
               </div>
             </div>
