@@ -35,9 +35,9 @@ export default function Hero() {
           <div className="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
             <Link href="/" className="d-block mb-4">
               <Image
-                src="/assets/images/the-foundry-logo.jpeg"
+                src="/assets/images/the-foundry-logo-no-bg.png"
                 alt="Upland Logo"
-                width={150}
+                width={180}
                 height={150}
                 priority
               />
@@ -61,7 +61,7 @@ export default function Hero() {
 
           {/* Right Column */}
           <div className="col-lg-6 d-flex justify-content-center">
-            <RewardsSection />
+            {/*<RewardsSection />*/}
           </div>
         </div>
       </div>
