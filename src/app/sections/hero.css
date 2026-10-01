@@ -222,4 +222,43 @@
   }
 
 }
+/* Desktop */
+.hero-logo img {
+  width: 180px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.hero-order-btn {
+  font-size: 14px;
+  padding: 10px 30px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-logo img {
+    width: 145px;
+  }
+
+  .hero-logo {
+    margin-bottom: 20px !important;
+  }
+
+  .hero-order-btn {
+    font-size: 12px;
+    padding: 8px 22px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .hero-logo img {
+    width: 125px;
+  }
+
+  .hero-order-btn {
+    font-size: 11px;
+    padding: 7px 20px;
+  }
+}
 
