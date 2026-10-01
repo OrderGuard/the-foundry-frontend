@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/dm/Documents/y@ds112kp/Project/0 - Job/2 - Fiverr/7 - Josh/2 - bis.2026/4 - The Foundry/the-foundry-frontend/src/app/layout\":[\"static/media/eaead17c7dbfcd5d-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
