@@ -1,12 +1,11 @@
 export default function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto p-6 text-gray-800 leading-relaxed">
-      <h1 className="text-2xl font-bold mb-4">PRIVACY POLICY — KLUB KITCHEN 83
-      (POWERED BY ORDERUP)
+      <h1 className="text-2xl font-bold mb-4">PRIVACY POLICY — THE FOUNDRY      (POWERED BY ORDERUP)
       </h1>
       <div className="mb-6">
         <p>
-        This Privacy Policy explains how <b>Klub Kitchen 83 (“we”, “us”, “our”)</b> collects and uses your
+        This Privacy Policy explains how <b>The Foundry (“we”, “us”, “our”)</b> collects and uses your
           personal data when you use our online ordering website or mobile application (the “Service”),
           which is powered by <b>OrderGuard LTD trading as OrderUp</b> (“OrderGuard”, “OrderUp”).
         </p>
@@ -202,7 +201,7 @@ export default function PrivacyPolicy() {
           </li>
         </ul>
         <p>
-          To exercise your rights, please contact Klub Kitchen 83 using the contact details provided on the Service.
+          To exercise your rights, please contact The Foundry using the contact details provided on the Service.
         </p>
         <p>
           You also have the right to lodge a complaint with the Information Commissioner’s Office.
@@ -214,7 +213,7 @@ export default function PrivacyPolicy() {
         <strong>8. Cookies</strong>
         <p>
   We use cookies to operate and improve the Service.
-  See our <a href="https://www.klubkitchen83.com/cookies-policy" className="text-blue-600 hover:underline">Cookie Policy</a> for details.
+  See our <a href="https://www.thefoundrykitchen.co.uk/cookies-policy" className="text-blue-600 hover:underline">Cookie Policy</a> for details.
 </p>
       </div>
 
@@ -239,7 +238,7 @@ export default function PrivacyPolicy() {
           11. Contact
         </strong>
         <p>
-          For privacy questions, contact Klub Kitchen 83 using the contact details shown on the Service.
+          For privacy questions, contact The Foundry using the contact details shown on the Service.
         </p>
       </div>
 

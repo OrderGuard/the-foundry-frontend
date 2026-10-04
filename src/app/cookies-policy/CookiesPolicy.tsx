@@ -1,11 +1,11 @@
 export default function CookiesPolicy() {
   return (
     <div className="max-w-4xl mx-auto p-6 text-gray-800 leading-relaxed">
-      <h1 className="text-2xl font-bold mb-4">COOKIE POLICY — KLUB KITCHEN 83
+      <h1 className="text-2xl font-bold mb-4">COOKIE POLICY — THE FOUNDRY
 (POWERED BY ORDERUP)
       </h1>
         <p>
-          This Cookie Policy explains how Klub Kitchen 83 uses cookies and similar technologies when
+          This Cookie Policy explains how The Foundry uses cookies and similar technologies when
           you use our online ordering website or mobile application (the “Service”), which is powered by
           OrderGuard LTD trading as OrderUp (“OrderGuard”, “OrderUp”).
         </p>
