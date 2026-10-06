@@ -120,6 +120,13 @@ body.modal-open {
   line-height: 1;
 }
 
+@media (max-width: 768px) {
+  .modal-footer {
+    min-height: 180px;
+    padding: 15px;
+  }
+}
+
 /* Stripping the input of all white styling */
 .qty-pill-blue .quantity-input {
   background: transparent;
