@@ -29,12 +29,12 @@ export default function Contact() {
 
               <div className="open-hours">
                 <i className="bi bi-clock"></i>
-                <h4>Open Hours:</h4>
+                <h4>
+                  Open Hours:<br/>
+                  <span>Monday - Sunday:</span>
+                </h4>
 
-                {/*<p>
-                  Monday-Tuesday: Closed
-                </p>
-                  <br />*/}
+                  <br />
 
                 <p>
                   Breakfast
