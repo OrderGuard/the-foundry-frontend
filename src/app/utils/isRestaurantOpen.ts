@@ -5,13 +5,13 @@ type Schedule = {
 
 // Sunday = 0, Monday = 1, ..., Saturday = 6
 const SCHEDULE: Schedule = {
-  0: ["11:00", "15:00"], // Sunday
-  1: null,               // Monday closed
-  2: ["17:00", "22:00"], // Tuesday
-  3: ["17:00", "22:30"], // Wednesday
-  4: ["17:00", "22:30"], // Thursday
-  5: ["17:00", "23:00"], // Friday
-  6: ["17:00", "23:00"], // Saturday
+  0: ["00:00", "23:59"], // Sunday
+  1: ["00:00", "23:59"], // Monday
+  2: ["00:00", "23:59"], // Tuesday
+  3: ["00:00", "23:59"], // Wednesday
+  4: ["00:00", "23:59"], // Thursday
+  5: ["00:00", "23:59"], // Friday
+  6: ["00:00", "23:59"], // Saturday
 };
 
 // Build a Date representing the current moment in UTC (GMT)
