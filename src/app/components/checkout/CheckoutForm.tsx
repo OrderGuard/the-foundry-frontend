@@ -681,6 +681,7 @@ export default function CheckoutForm() {
                           value={formatUK(form.phone_number)}
                           onChange={handlePhoneChange}
                           className="form-control"
+                          required
                         />
                       </div>
                     </div>
