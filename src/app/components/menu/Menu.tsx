@@ -10,9 +10,11 @@ import './menu.css';
 type Menu = {
   id: number;
   name: string;
-  start_time?: string;
-  end_time?: string;
-  is_active?: boolean;
+  start_time: string;
+  end_time: string;
+  is_open: boolean;
+  opening_time_display: string;
+  closing_time_display: string;
 };
 
 type Category = {
@@ -131,7 +133,7 @@ export default function MenuComponents() {
 
         // Only active menus
         const activeMenus = menuData.filter(
-          (menu: Menu) => menu.is_active !== false
+          (menu: Menu) => menu.is_open !== false
         );
 
         setMenus(activeMenus);
