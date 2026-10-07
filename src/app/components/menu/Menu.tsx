@@ -300,27 +300,40 @@ export default function MenuComponents() {
         {/* BREAKFAST / DINNER */}
         {/* ================================== */}
 
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="menu-flters">
+<div className="col-lg-12 d-flex justify-content-center">
+  <ul id="menu-flters">
+    {menus.map((menu) => {
+      const isDisabled = !menu.is_open;
 
-            {menus.map((menu) => (
-              <li
-                key={menu.id}
-                className={
-                  selectedMenu?.id === menu.id
-                    ? 'filter-active'
-                    : undefined
-                }
-                onClick={() =>
-                  handleMenuChange(menu)
-                }
-              >
-                {menu.name}
-              </li>
-            ))}
+      return (
+        <li
+          key={menu.id}
+          className={
+            isDisabled
+              ? "menu-disabled"
+              : selectedMenu?.id === menu.id
+                ? "filter-active"
+                : ""
+          }
+          onClick={() => {
+            if (!isDisabled) {
+              handleMenuChange(menu);
+            }
+          }}
+          aria-disabled={isDisabled}
+        >
+          <span>{menu.name}</span>
 
-          </ul>
-        </div>
+          {isDisabled && (
+            <small className="menu-opening-time">
+              Opens at {menu.opening_time_display}
+            </small>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</div>
 
         {/* ================================== */}
         {/* CATEGORIES */}

@@ -59,3 +59,29 @@
 .menu #menu-flters li:last-child {
   margin-right: 0;
 }
+
+#menu-flters li {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#menu-flters li.menu-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#menu-flters li.menu-disabled:hover {
+  opacity: 0.6;
+}
+
+.menu-opening-time {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+#menu-flters li.filter-active {
+  opacity: 1;
+}
+
