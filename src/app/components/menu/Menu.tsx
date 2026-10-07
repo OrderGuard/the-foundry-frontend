@@ -131,26 +131,25 @@ export default function MenuComponents() {
           getMenuItems(),
         ]);
 
-        // Only active menus
-        const activeMenus = menuData.filter(
-          (menu: Menu) => menu.is_open !== false
-        );
-
-        setMenus(activeMenus);
+        // Keep ALL menus visible
+        setMenus(menuData);
 
         // Save ALL menu items
         setData(itemData);
 
-        // Select first menu
-        if (activeMenus.length > 0) {
-          setSelectedMenu(activeMenus[0]);
+        // Automatically select the currently open menu
+        const openMenu = menuData.find(
+          (menu: Menu) => menu.is_open
+        );
+
+        if (openMenu) {
+          setSelectedMenu(openMenu);
+        } else {
+          setSelectedMenu(null);
         }
 
       } catch (error) {
-        console.error(
-          'Initial data error:',
-          error
-        );
+        console.error("Initial data error:", error);
       } finally {
         setMenuLoading(false);
       }
@@ -302,41 +301,46 @@ export default function MenuComponents() {
         {/* BREAKFAST / DINNER */}
         {/* ================================== */}
 
-<div className="col-lg-12 d-flex justify-content-center">
-  <ul id="menu-flters">
-    {menus.map((menu) => {
-      const isDisabled = !menu.is_open;
+        <div className="col-lg-12 d-flex justify-content-center">
+          <ul id="menu-flters">
+            {menus.map((menu) => {
+              const isDisabled = !menu.is_open;
 
-      return (
-        <li
-          key={menu.id}
-          className={
-            isDisabled
-              ? "menu-disabled"
-              : selectedMenu?.id === menu.id
-                ? "filter-active"
-                : ""
-          }
-          onClick={() => {
-            if (!isDisabled) {
-              handleMenuChange(menu);
-            }
-          }}
-          aria-disabled={isDisabled}
-        >
-          <span>{menu.name}</span>
+              return (
+                <li
+                  key={menu.id}
+                  className={
+                    isDisabled
+                      ? "menu-disabled"
+                      : selectedMenu?.id === menu.id
+                        ? "filter-active"
+                        : ""
+                  }
+                  onClick={() => {
+                    if (!isDisabled) {
+                      handleMenuChange(menu);
+                    }
+                  }}
+                  aria-disabled={isDisabled}
+                >
+                  <span>{menu.name}</span>
 
-          {isDisabled && (
-            <small className="menu-opening-time">
-              Opens at {menu.opening_time_display}
-            </small>
-          )}
-        </li>
-      );
-    })}
-  </ul>
-</div>
-
+                  {isDisabled && (
+                    <small className="menu-opening-time">
+                      Opens at{" "}
+                      {new Date(
+                        `1970-01-01T${menu.start_time}`
+                      ).toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })}
+                    </small>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         {/* ================================== */}
         {/* CATEGORIES */}
         {/* ================================== */}
