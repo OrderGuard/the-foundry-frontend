@@ -22,6 +22,7 @@ import { AuthProvider } from './context/AuthContext';
 // import customised components
 import TopBar from './components/TopBar';
 import Header from './components/Header';
+import DiscountBanner from './components/DiscountBanner';
 import Footer from './sections/Footer';
 import BackToTopBtn from './components/BackToTopBtn';
 
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={playfair.className}>
       <Providers>
+        <DiscountBanner />
         <TopBar />
         {/*<AuthProvider>*/}
         <Header />

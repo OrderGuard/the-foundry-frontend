@@ -8,11 +8,11 @@
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
-  top: 40px;
+  top: 80px;
 }
 
 #header.header-scrolled {
-  top: 0;
+  top: 40px;
   /*background: rgba(0, 0, 0, 0.85);*/
   background: #ffffff90;
   border-bottom: 1px solid #37332a;
