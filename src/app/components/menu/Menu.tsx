@@ -44,6 +44,18 @@ export default function MenuComponents() {
   // Breakfast / Dinner
   const [menus, setMenus] = useState<Menu[]>([]);
 
+  useEffect(() => {
+    if (menus.length === 0) return;
+
+    const allMenusClosed = menus.every(
+      (menu) => !menu.is_open
+    );
+
+    if (allMenusClosed) {
+      setSelectedMenu(menus[0]);
+    }
+  }, [menus]);
+
   // Selected Breakfast/Dinner
   const [selectedMenu, setSelectedMenu] = useState<Menu | null>(null);
 
@@ -297,50 +309,44 @@ export default function MenuComponents() {
           />
         </div>
 
-        {/* ================================== */}
-        {/* BREAKFAST / DINNER */}
-        {/* ================================== */}
+{/* BREAKFAST / DINNER */}
 
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="menu-flters">
-            {menus.map((menu) => {
-              const isDisabled = !menu.is_open;
+<div className="col-lg-12 d-flex justify-content-center">
+  <ul id="menu-flters">
+    {menus.map((menu) => {
+      const isDisabled = !menu.is_open;
 
-              return (
-                <li
-                  key={menu.id}
-                  className={
-                    isDisabled
-                      ? "menu-disabled"
-                      : selectedMenu?.id === menu.id
-                        ? "filter-active"
-                        : ""
-                  }
-                  onClick={() => {
-                    if (!isDisabled) {
-                      handleMenuChange(menu);
-                    }
-                  }}
-                  aria-disabled={isDisabled}
-                >
-                  <span>{menu.name}</span>
+      return (
+        <li
+          key={menu.id}
+          className={[
+            isDisabled ? "menu-disabled" : "",
+            selectedMenu?.id === menu.id
+              ? "filter-active"
+              : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          onClick={() => handleMenuChange(menu)}
+        >
+          <span>{menu.name}</span>
 
-                  {isDisabled && (
-                    <small className="menu-opening-time">
-                      Opens at{" "}
-                      {new Date(
-                        `1970-01-01T${menu.start_time}`
-                      ).toLocaleTimeString([], {
-                        hour: "numeric",
-                        minute: "2-digit",
-                      })}
-                    </small>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          {isDisabled && (
+            <small className="menu-opening-time">
+              Opens at{" "}
+              {new Date(
+                `1970-01-01T${menu.start_time}`
+              ).toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })}
+            </small>
+          )}
+        </li>
+      );
+    })}
+  </ul>
+</div>
         {/* ================================== */}
         {/* CATEGORIES */}
         {/* ================================== */}
@@ -387,54 +393,45 @@ export default function MenuComponents() {
 
         )}
 
-        {/* ================================== */}
-        {/* MENU ITEMS */}
-        {/* ================================== */}
+{/* MENU ITEMS */}
 
-        <div
-          className="row menu-container"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+<div
+  className={[
+    "row",
+    "menu-container",
+    selectedMenu?.is_open ? "" : "menu-items-disabled",
+  ]
+    .filter(Boolean)
+    .join(" ")}
+  //data-aos="fade-up"
+  //data-aos-delay="200"
+>
+  {itemsLoading ? (
+    <Preloader />
+  ) : items.length === 0 ? (
+    <p className="no-menu text-center w-100">
+      No menu item available
+    </p>
+  ) : (
+    items
+      .filter((item) => {
+        const categoryName = item.category?.name ?? "";
 
-          {itemsLoading ? (
-
-            <Preloader />
-
-          ) : items.length === 0 ? (
-
-            <p className="no-menu text-center w-100">
-              No menu item available
-            </p>
-
-          ) : (
-
-            items
-              .filter((item) => {
-
-                const categoryName =
-                  item.category?.name ?? '';
-
-                return !categoryName
-                  .toLowerCase()
-                  .includes('toppings');
-
-              })
-              .map((item) => (
-
-                <MenuItem
-                  key={item.id}
-                  item={item}
-                  onDetailsClick={
-                    setSelectedItem
-                  }
-                />
-
-              ))
-
-          )}
-
-        </div>
+        return !categoryName
+          .toLowerCase()
+          .includes("toppings");
+      })
+      .map((item) => (
+        <MenuItem
+          key={item.id}
+          item={item}
+          onDetailsClick={
+            selectedMenu?.is_open ? setSelectedItem : undefined
+          }
+        />
+      ))
+  )}
+</div>
 
       </div>
 

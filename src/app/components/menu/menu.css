@@ -85,3 +85,35 @@
   opacity: 1;
 }
 
+/* Closed menu tab: still clickable */
+#menu-flters li.menu-disabled {
+  opacity: 0.5;
+  cursor: pointer !important;
+}
+
+/* Keep categories clickable */
+.category-filters li {
+  cursor: pointer;
+}
+
+/* Closed menu: disable menu item interactions only */
+.menu-items-disabled {
+  opacity: 0.6;
+}
+
+.menu-items-disabled .menu-item,
+.menu-items-disabled .menu-item *,
+.menu-items-disabled .menu-item-card,
+.menu-items-disabled .menu-item-card * {
+  pointer-events: none !important;
+  opacity: 0.8;
+}
+
+/* Opening time */
+.menu-opening-time {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 400;
+  color: #777;
+}
