@@ -10,45 +10,69 @@ type MenuItemProps = {
     price: number;
     description?: string;
   };
+  isMenuOpen: boolean;
   onDetailsClick: (item: any) => void;
 };
 
-export default function MenuItem({ item, onDetailsClick }: MenuItemProps) {
-  const [imgSrc, setImgSrc] = useState(item.image || "/assets/images/the-foundry-logo.jpeg");
-  //const [imgSrc, setImgSrc] = useState(item.image || "/assets/images/menu/cake.jpg");
+export default function MenuItem({
+  item,
+  isMenuOpen,
+  onDetailsClick,
+}: MenuItemProps) {
+  const [imgSrc, setImgSrc] = useState(
+    item.image || "/assets/images/the-foundry-logo.jpeg"
+  );
 
   return (
     <div
-      className="col-lg-5 menu-item mx-auto"
-      onClick={() => onDetailsClick(item)}
+      className={`col-lg-5 menu-item mx-auto ${
+        !isMenuOpen ? "menu-item-disabled" : ""
+      }`}
+      onClick={() => {
+        if (!isMenuOpen) return;
+        onDetailsClick(item);
+      }}
     >
       <Image
         src={imgSrc}
         alt={item.name}
-        width={60} // adjust as needed
-        height={70} // adjust as needed
+        width={60}
+        height={70}
         className="menu-img"
-        onError={() => setImgSrc("/assets/images/klub-kitchen-83-logo-white.PNG")}
-        priority={true} // helps LCP if visible above the fold
+        onError={() =>
+          setImgSrc("/assets/images/klub-kitchen-83-logo-white.PNG")
+        }
+        priority={true}
       />
 
       <div className="menu-content">
         <div className="name-action">
-          <a className="menu-name-button" onClick={() => onDetailsClick(item)}>
+          <a
+            className="menu-name-button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              if (!isMenuOpen) return;
+              onDetailsClick(item);
+            }}
+          >
             {item.name}
           </a>
         </div>
 
         <div className="price-action">
-
           <button
             className="add-to-cart-button"
+            disabled={!isMenuOpen}
             onClick={(e) => {
               e.stopPropagation();
+
+              if (!isMenuOpen) return;
               onDetailsClick(item);
             }}
           >
-          <span>£{item.price}</span>
+            <span>£{item.price}</span>
             🛒
           </button>
 
@@ -56,7 +80,7 @@ export default function MenuItem({ item, onDetailsClick }: MenuItemProps) {
             className="checkout-button"
             onClick={(e) => {
               e.stopPropagation();
-              window.location.href = "/checkout"; // or use Next.js router
+              window.location.href = "/checkout";
             }}
           >
             💳 Checkout

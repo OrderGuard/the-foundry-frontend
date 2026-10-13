@@ -425,9 +425,8 @@ export default function MenuComponents() {
         <MenuItem
           key={item.id}
           item={item}
-          onDetailsClick={
-            selectedMenu?.is_open ? setSelectedItem : undefined
-          }
+          isMenuOpen={!!selectedMenu?.is_open}
+          onDetailsClick={setSelectedItem}
         />
       ))
   )}
