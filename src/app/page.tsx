@@ -10,6 +10,7 @@ import Chefs from './sections/Chefs';
 import Contact from './sections/Contact';
 import { useEffect } from 'react';
 import Booking from './sections/Booking';
+import Reward from './sections/Rewards';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         {/*
           <Events />
         */}
+        <Reward />
         <Booking />
         {/*<Testimonials />*/}
         <Gallery />
