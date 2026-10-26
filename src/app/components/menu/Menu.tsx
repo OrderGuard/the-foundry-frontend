@@ -103,7 +103,7 @@ export default function MenuComponents() {
 
   const getCategories = async (menuName: string) => {
     const response = await fetch(
-      `${API_URL}/menu/menu/${menuName.toLowerCase()}/`
+      `${API_URL}/menu/menu/by-name/${menuName.toLowerCase()}/categories/`
     );
 
     if (!response.ok) {
