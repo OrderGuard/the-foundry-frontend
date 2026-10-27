@@ -85,16 +85,31 @@ export default function MenuComponents() {
   // GET MENUS
   // ----------------------------------------
 
+  //const getMenus = async () => {
+    //const response = await fetch(
+      //`${API_URL}/menu/menu/`
+    //);
+
+    //if (!response.ok) {
+      //throw new Error('Failed to fetch menus');
+    //}
+
+    //return await response.json();
+  //};
+
   const getMenus = async () => {
-    const response = await fetch(
-      `${API_URL}/menu/menu/`
-    );
+    const response = await fetch(`${API_URL}/menu/menu/`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch menus');
     }
 
-    return await response.json();
+    const menus = await response.json();
+
+    return menus.filter(
+      (menu: { is_temporarily_closed: boolean }) =>
+        !menu.is_temporarily_closed
+    );
   };
 
   // ----------------------------------------
